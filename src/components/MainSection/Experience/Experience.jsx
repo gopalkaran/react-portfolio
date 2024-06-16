@@ -14,7 +14,13 @@ import { timeLineData } from "./experienceData";
 
 const Experience = () => {
   return (
-    <List sx={{ width: "80%", py: 10, gap: 2 }}>
+    <List
+      sx={{
+        width: { xs: "90%", sm: "80%" },
+        py: 10,
+        gap: 2,
+      }}
+    >
       {timeLineData?.map((timeLineEvent) => {
         return (
           <ListItem
@@ -25,6 +31,7 @@ const Experience = () => {
               alignItems: "flex-start",
               gap: 3,
               p: 2,
+              mb: 2,
               width: "100%",
               height: "auto",
               textDecoration: "none",
@@ -52,9 +59,14 @@ const Experience = () => {
             <Box
               component={"img"}
               src={timeLineEvent.logo}
-              height={70}
-              width={70}
-              sx={{ border: "2px solid #aaa", borderRadius: 1, marginTop: 1 }}
+              sx={{
+                border: "2px solid #aaa",
+                borderRadius: 1,
+                marginTop: 1,
+                maxWidth: 70,
+                width: "20%",
+                height: "auto",
+              }}
             ></Box>
             <Stack direction={"column"} gap={1}>
               <Stack direction={"column"} gap={0.2}>

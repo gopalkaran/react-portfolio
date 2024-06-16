@@ -20,10 +20,16 @@ const Projects = () => {
             key={project.id}
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: {
+                xs: "column-reverse",
+                sm: "row",
+                md: "column-reverse",
+                lg: "row",
+              },
               alignItems: "flex-start",
               gap: 3,
               p: 2,
+              mb: 2,
               width: "100%",
               height: "auto",
               textDecoration: "none",
@@ -50,9 +56,18 @@ const Projects = () => {
             <Box
               component={"img"}
               src={project.logo}
-              height={70}
-              width={120}
-              sx={{ border: "2px solid #aaa", borderRadius: 1, marginTop: 1 }}
+              sx={{
+                border: "2px solid #aaa",
+                borderRadius: 1,
+                marginTop: 1,
+                maxWidth: {
+                  xs: "70%",
+                  sm: "30%",
+                  md: "70%",
+                  lg: "30%",
+                },
+                height: "auto",
+              }}
             ></Box>
             <Stack direction={"column"} gap={1}>
               <Stack direction={"row"}>
