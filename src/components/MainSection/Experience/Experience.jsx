@@ -1,0 +1,124 @@
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { LinkSVG, SVGComponent } from "../../../utils/SvgComponent";
+import { Link } from "react-router-dom";
+import React from "react";
+import { timeLineData } from "./experienceData";
+
+const Experience = () => {
+  return (
+    <List sx={{ width: "80%", py: 10, gap: 2 }}>
+      {timeLineData?.map((timeLineEvent) => {
+        return (
+          <ListItem
+            key={timeLineEvent.id}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              gap: 3,
+              p: 2,
+              width: "100%",
+              height: "auto",
+              textDecoration: "none",
+              color: "inherit",
+              borderRadius: 1,
+              "&:hover": {
+                backgroundColor: (theme) => theme.palette.secondary.main,
+                cursor: "pointer",
+                "& .MuiListItemIcon-root": {
+                  transform: "translateX(5px) translateY(-5px)",
+                  transition: "transform 0.3s",
+                },
+                "& .MuiListItemText-root": {
+                  color: (theme) => theme.palette.primary.contrastText,
+                },
+                "& svg": {
+                  fill: (theme) => theme.palette.primary.contrastText,
+                },
+              },
+            }}
+            component={Link}
+            target="_blank"
+            to={timeLineEvent.url}
+          >
+            <Box
+              component={"img"}
+              src={timeLineEvent.logo}
+              height={70}
+              width={70}
+              sx={{ border: "2px solid #aaa", borderRadius: 1, marginTop: 1 }}
+            ></Box>
+            <Stack direction={"column"} gap={1}>
+              <Stack direction={"column"} gap={0.2}>
+                <Stack direction={"row"}>
+                  <ListItemText
+                    primary={timeLineEvent.designation}
+                    sx={{
+                      flex: "0 1 auto",
+                      color: (theme) => theme.palette.primary.light,
+                    }}
+                  />
+                  <ListItemIcon sx={{ alignItems: "center" }}>
+                    <SVGComponent {...LinkSVG} />
+                  </ListItemIcon>
+                </Stack>
+                <Typography component={"p"} fontSize={12}>
+                  {timeLineEvent.companyName}
+                </Typography>
+                <Typography component={"p"} fontSize={11}>
+                  {timeLineEvent.duration}
+                </Typography>
+              </Stack>
+              <List sx={{ listStyleType: "disc", pl: "16px" }}>
+                {timeLineEvent.responsibility?.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <ListItem sx={{ display: "list-item" }}>
+                      <ListItemText
+                        primary={item.text}
+                        sx={{
+                          "& .MuiTypography-root": {
+                            fontSize: 12,
+                            color: (theme) => theme.palette.secondary.light,
+                            textAlign: "justify",
+                          },
+                        }}
+                      />
+                    </ListItem>
+                  </React.Fragment>
+                ))}
+              </List>
+              <Stack
+                direction={"row"}
+                flexWrap={"wrap"}
+                gap={1}
+                sx={{
+                  "& .MuiBox-root": {
+                    color: (theme) => theme.palette.primary.contrastText,
+                    backgroundColor: "rgba(45, 212, 191, .1)",
+                    borderRadius: 5,
+                    fontSize: 12,
+                    p: 1,
+                  },
+                }}
+              >
+                {/* {timeLineEvent?.techStack?.map((item) => {
+                  return <Box key={item}>{item}</Box>;
+                })} */}
+              </Stack>
+            </Stack>
+          </ListItem>
+        );
+      })}
+    </List>
+  );
+};
+
+export default Experience;
