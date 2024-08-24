@@ -1,10 +1,14 @@
 import { Box, List, ListItem, styled } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
+const ABOUT = "About";
+const EXPERIENCE = "Experience";
+const PROJECT = "Projects";
+
 const NavData = [
-  { heading: "About", path: "/about" },
-  { heading: "Experience", path: "/experience" },
-  { heading: "Projects", path: "/projects" },
+  { heading: ABOUT, path: "/about" },
+  { heading: EXPERIENCE, path: "/experience" },
+  { heading: PROJECT, path: "/projects" },
 ];
 
 const CustomLink = styled(NavLink)(({ theme }) => ({
@@ -84,11 +88,30 @@ const ListItemText = styled(Box)(({ theme }) => ({
 }));
 
 const VerticalNavbar = () => {
+  function moveTo(to) {
+    switch (to) {
+      case ABOUT: {
+        window["scrollTo"]({ top: 600, behavior: "smooth" });
+        break;
+      }
+      case EXPERIENCE: {
+        window["scrollTo"]({ top: 1850, behavior: "smooth" });
+        break;
+      }
+      case PROJECT: {
+        window["scrollTo"]({ top: 2950, behavior: "smooth" });
+        break;
+      }
+      default:
+        return;
+    }
+  }
+
   return (
     <List>
       {NavData.map((text) => (
         <ListItem key={text.heading} sx={{ paddingLeft: 0 }}>
-          <CustomLink to={text.path}>
+          <CustomLink to={text.path} onClick={() => moveTo(text.heading)}>
             {/* <CustomListItem primary={text.heading} /> */}
             <TextLine component="span" className="line"></TextLine>
             <ListItemText component="span" className="text">
