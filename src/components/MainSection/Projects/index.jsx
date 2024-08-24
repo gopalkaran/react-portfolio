@@ -13,7 +13,7 @@ import { projectsData } from "./projectData";
 
 const Projects = () => {
   return (
-    <List sx={{ width: "80%", py: 10, gap: 2 }}>
+    <List sx={{ width: "80%", py: 10, gap: 2, m: "0 auto" }}>
       {projectsData?.map((project) => {
         return (
           <ListItem

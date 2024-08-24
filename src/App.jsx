@@ -17,7 +17,7 @@ function App() {
           md={6}
           sx={{
             maxHeight: "100vh",
-            overflow: "auto",
+            overflow: { xs: "none", md: "auto" },
             display: { xs: "flex", md: "block" },
             justifyContent: { xs: "center", md: "normal" },
           }}

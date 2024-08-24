@@ -19,6 +19,7 @@ const Experience = () => {
         width: { xs: "90%", sm: "80%" },
         py: 10,
         gap: 2,
+        m: "0 auto",
       }}
     >
       {timeLineData?.map((timeLineEvent) => {

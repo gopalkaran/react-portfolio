@@ -42,7 +42,7 @@ const BasicInfo = () => {
 
 const About = () => {
   return (
-    <Stack sx={{ width: "80%", textAlign: "justify", py: 12 }}>
+    <Stack sx={{ width: "80%", textAlign: "justify", py: 12, m: "0 auto" }}>
       <BasicInfo />
       <Typography component="p" sx={headingStyle}>
         My Expertise
