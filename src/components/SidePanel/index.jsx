@@ -4,7 +4,8 @@ import VerticalNavbar from "./VerticalNavbar";
 import { SVGComponent, SocialData } from "../../utils/SvgComponent";
 import theme from "../../utils/theme";
 
-const SidePanel = () => {
+// eslint-disable-next-line react/prop-types
+const SidePanel = ({ aboutRef, experienceRef, projectRef }) => {
   return (
     <Box sx={{ p: { xs: 9, md: "6rem" }, width: "90%" }}>
       <Typography
@@ -29,7 +30,11 @@ const SidePanel = () => {
       <Typography component="p" sx={{ marginBottom: "3rem" }}>
         I build pixel-perfect, engaging, and accessible digital experiences.
       </Typography>
-      <VerticalNavbar />
+      <VerticalNavbar
+        aboutRef={aboutRef}
+        experienceRef={experienceRef}
+        projectRef={projectRef}
+      />
       <Stack
         direction={"row"}
         spacing={2}
