@@ -87,19 +87,23 @@ const ListItemText = styled(Box)(({ theme }) => ({
   letterSpacing: ".1em",
 }));
 
-const VerticalNavbar = () => {
+// eslint-disable-next-line react/prop-types
+const VerticalNavbar = ({ aboutRef, experienceRef, projectRef }) => {
   function moveTo(to) {
     switch (to) {
       case ABOUT: {
-        window["scrollTo"]({ top: 600, behavior: "smooth" });
+        // eslint-disable-next-line react/prop-types
+        aboutRef.current.scrollIntoView({ behavior: "smooth" });
         break;
       }
       case EXPERIENCE: {
-        window["scrollTo"]({ top: 1850, behavior: "smooth" });
+        // eslint-disable-next-line react/prop-types
+        experienceRef.current.scrollIntoView({ behavior: "smooth" });
         break;
       }
       case PROJECT: {
-        window["scrollTo"]({ top: 2950, behavior: "smooth" });
+        // eslint-disable-next-line react/prop-types
+        projectRef.current.scrollIntoView({ behavior: "smooth" });
         break;
       }
       default:

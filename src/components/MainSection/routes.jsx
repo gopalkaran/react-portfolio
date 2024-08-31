@@ -3,7 +3,8 @@ import Experience from "./Experience/Experience.jsx";
 import Projects from "./Projects";
 import { Box } from "@mui/material";
 
-const MainSection = () => {
+// eslint-disable-next-line react/prop-types
+const MainSection = ({ aboutRef, experienceRef, projectRef }) => {
   return (
     // <Routes>
     //   <Route path="/" element={<Navigate to={"about"} />} />
@@ -12,9 +13,9 @@ const MainSection = () => {
     //   <Route path="/projects" element={<Projects />} />
     // </Routes>
     <Box>
-      <About />
-      <Experience />
-      <Projects />
+      <About aboutRef={aboutRef} />
+      <Experience experienceRef={experienceRef} />
+      <Projects projectRef={projectRef} />
     </Box>
   );
 };

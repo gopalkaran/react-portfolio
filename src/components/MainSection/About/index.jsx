@@ -40,56 +40,59 @@ const BasicInfo = () => {
   );
 };
 
-const About = () => {
+// eslint-disable-next-line react/prop-types
+const About = ({ aboutRef }) => {
   return (
-    <Stack sx={{ width: "80%", textAlign: "justify", py: 12, m: "0 auto" }}>
-      <BasicInfo />
-      <Typography component="p" sx={headingStyle}>
-        My Expertise
-      </Typography>
-      <List sx={{ listStyleType: "disc", pl: "16px" }}>
-        {expertiseArray?.map((item) => (
-          <React.Fragment key={item.heading}>
-            <ListItem
-              sx={{
-                display: "list-item",
-              }}
-            >
-              <Typography
-                component="p"
+    <div ref={aboutRef}>
+      <Stack sx={{ width: "80%", textAlign: "justify", py: 12, m: "0 auto" }}>
+        <BasicInfo />
+        <Typography component="p" sx={headingStyle}>
+          My Expertise
+        </Typography>
+        <List sx={{ listStyleType: "disc", pl: "16px" }}>
+          {expertiseArray?.map((item) => (
+            <React.Fragment key={item.heading}>
+              <ListItem
                 sx={{
-                  fontSize: 16,
-                  textAlign: "justify",
+                  display: "list-item",
                 }}
               >
                 <Typography
-                  component="span"
+                  component="p"
                   sx={{
-                    fontWeight: 700,
-                    color: (theme) => theme.palette.primary.light,
+                    fontSize: 16,
+                    textAlign: "justify",
                   }}
                 >
-                  {item.heading}
+                  <Typography
+                    component="span"
+                    sx={{
+                      fontWeight: 700,
+                      color: (theme) => theme.palette.primary.light,
+                    }}
+                  >
+                    {item.heading}
+                  </Typography>
+                  <Typography component="span">{item.text}</Typography>
                 </Typography>
-                <Typography component="span">{item.text}</Typography>
-              </Typography>
-            </ListItem>
-          </React.Fragment>
-        ))}
-      </List>
-      <Typography component="p" sx={headingStyle}>
-        My Approach
-      </Typography>
-      <Typography component="p">{myApproachText}</Typography>
-      <Typography component="p" sx={headingStyle}>
-        Projects & Experience
-      </Typography>
-      <Typography component="p">{experienceText}</Typography>
-      <Typography component="p" sx={headingStyle}>
-        {`Let's Connect`}
-      </Typography>
-      <Typography component="p">{connectMessage}</Typography>
-    </Stack>
+              </ListItem>
+            </React.Fragment>
+          ))}
+        </List>
+        <Typography component="p" sx={headingStyle}>
+          My Approach
+        </Typography>
+        <Typography component="p">{myApproachText}</Typography>
+        <Typography component="p" sx={headingStyle}>
+          Projects & Experience
+        </Typography>
+        <Typography component="p">{experienceText}</Typography>
+        <Typography component="p" sx={headingStyle}>
+          {`Let's Connect`}
+        </Typography>
+        <Typography component="p">{connectMessage}</Typography>
+      </Stack>
+    </div>
   );
 };
 
