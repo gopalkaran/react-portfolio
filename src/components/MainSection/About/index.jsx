@@ -25,7 +25,7 @@ const BasicInfo = () => {
     >
       {`Hi there! I'm a passionate and dedicated `}
       <Typography component="span">
-        {`React Developer with 2.5 years of experience `}
+        {`React Developer with 2.8 years of experience `}
       </Typography>
       {`in building dynamic and responsive web applications. My journey in web
       development began with a fascination for creating intuitive user
