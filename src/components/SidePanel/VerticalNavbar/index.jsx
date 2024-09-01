@@ -1,21 +1,51 @@
 import { Box, List, ListItem, styled } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
-const ABOUT = "About";
-const EXPERIENCE = "Experience";
-const PROJECT = "Projects";
+const ABOUT = "about";
+const EXPERIENCE = "experience";
+const PROJECT = "projects";
 
 const NavData = [
-  { heading: ABOUT, path: "/about" },
-  { heading: EXPERIENCE, path: "/experience" },
-  { heading: PROJECT, path: "/projects" },
+  { heading: "About", section: ABOUT },
+  { heading: "Experience", section: EXPERIENCE },
+  { heading: "Projects", section: PROJECT },
 ];
 
-const CustomLink = styled(NavLink)(({ theme }) => ({
+// const CustomLink = styled(NavLink)(({ theme }) => ({
+//   textDecoration: "none",
+//   width: "100%",
+//   display: "flex",
+//   alignItems: "center",
+//   "&:hover": {
+//     "& .line": {
+//       width: "70px",
+//       backgroundColor: theme.palette.primary.light,
+//     },
+//     "& .text": {
+//       color: theme.palette.primary.light,
+//       left: "50px",
+//       transition: "left 0.3s",
+//     },
+//   },
+//   "&.active": {
+//     "& .line": {
+//       width: "70px",
+//       backgroundColor: theme.palette.primary.light,
+//     },
+//     "& .text": {
+//       color: theme.palette.primary.light,
+//       left: "50px",
+//       transition: "left 0.3s",
+//     },
+//   },
+// }));
+
+const CustomListItem = styled(ListItem)(({ theme }) => ({
   textDecoration: "none",
   width: "100%",
   display: "flex",
   alignItems: "center",
+  cursor: "pointer",
   "&:hover": {
     "& .line": {
       width: "70px",
@@ -40,33 +70,6 @@ const CustomLink = styled(NavLink)(({ theme }) => ({
   },
 }));
 
-// const CustomListItem = styled(ListItemText)(({ theme }) => ({
-//     position: 'relative',
-//     color: theme.palette.secondary.light,
-//     width: '100%',
-//     // left: '10px',
-//     "&:hover": {
-//         color: theme.palette.primary.light,
-//         // left: '90px',
-//         transition: 'left 0.3s',
-//     },
-//     '&::before': {
-//         content: "''",
-//         position: 'absolute',
-//         left: '0px',
-//         top: '50%',
-//         width: '40px',
-//         height: '1px',
-//         transition: 'width 0.3s',
-//         backgroundColor: theme.palette.secondary.light,
-//         marginRight: '60px',
-//     },
-//     '&:hover::before': {
-//         width: '80px',
-//         backgroundColor: theme.palette.primary.light,
-//     },
-// }))
-
 const TextLine = styled(Box)(({ theme }) => ({
   display: "inline-block",
   left: "0px",
@@ -89,7 +92,13 @@ const ListItemText = styled(Box)(({ theme }) => ({
 
 // eslint-disable-next-line react/prop-types
 const VerticalNavbar = ({ aboutRef, experienceRef, projectRef }) => {
-  function moveTo(to) {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const handleListItemClick = (index) => {
+    setSelectedIndex(index);
+  };
+  function moveTo(to, index) {
+    handleListItemClick(index);
     switch (to) {
       case ABOUT: {
         // eslint-disable-next-line react/prop-types
@@ -113,16 +122,23 @@ const VerticalNavbar = ({ aboutRef, experienceRef, projectRef }) => {
 
   return (
     <List>
-      {NavData.map((text) => (
-        <ListItem key={text.heading} sx={{ paddingLeft: 0 }}>
-          <CustomLink to={text.path} onClick={() => moveTo(text.heading)}>
-            {/* <CustomListItem primary={text.heading} /> */}
-            <TextLine component="span" className="line"></TextLine>
-            <ListItemText component="span" className="text">
-              {text.heading}
-            </ListItemText>
-          </CustomLink>
-        </ListItem>
+      {NavData.map((text, index) => (
+        <CustomListItem
+          key={text.section}
+          sx={{ paddingLeft: 0 }}
+          className={selectedIndex === index ? "active" : ""}
+          onClick={() => moveTo(text.section, index)}
+        >
+          {/* <CustomLink
+            to={`/${text.section}`}
+            onClick={() => moveTo(text.section)}
+          > */}
+          <TextLine component="span" className="line"></TextLine>
+          <ListItemText component="span" className="text">
+            {text.heading}
+          </ListItemText>
+          {/* </CustomLink> */}
+        </CustomListItem>
       ))}
     </List>
   );
