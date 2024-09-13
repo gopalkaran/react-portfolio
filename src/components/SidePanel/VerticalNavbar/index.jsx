@@ -92,7 +92,7 @@ const ListItemText = styled(Box)(({ theme }) => ({
 
 // eslint-disable-next-line react/prop-types
 const VerticalNavbar = ({ aboutRef, experienceRef, projectRef }) => {
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
